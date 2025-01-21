@@ -7,10 +7,7 @@ const copyFiles = async (source, destination) => {
     const destDir = path.dirname(destination);
     await fs.promises.mkdir(destDir, { recursive: true });
 
-    const readStream = fs.createReadStream(source);
-    const writeStream = fs.createWriteStream(destination);
-
-    readStream.pipe(writeStream);
+    await fs.promises.copyFile(source, destination);
   }
 };
 
