@@ -12,15 +12,13 @@ const read = readLine.createInterface({
 console.log('Welcome! Type "exit" to quit the program.');
 read.on('line', (text) => {
   if (text.toLowerCase() === 'exit') {
-    console.log('Keep in touch!');
     read.close();
     process.exit();
   } else {
     stream.write(text + '\n');
   }
 });
-process.on('SIGINT', () => {
-  console.log('Keep in touch!');
-  read.close();
+read.on('close', () => {
+  console.log('Goodbye!');
   process.exit();
 });
